@@ -1,0 +1,36 @@
+--Check extension:
+
+SELECT * FROM pg_available_extensions
+
+--add repository:
+sudo add-apt-repository "deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main"
+
+--download postgres:
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+
+--update:
+sudo apt update
+
+--Start installing PostgreSQL 12 and the “contrib” package to add additional --utilities and functionality to the database:
+
+sudo apt install postgresql-12 postgresql-contrib-12
+
+--*Version psql
+psql --version
+--Install PostGIS:
+sudo apt install postgis postgresql-12-postgis-3
+
+_______________________________________________________
+--enter postgres
+sudo -i -u postgres
+psql
+
+--create user:
+sudo -u postgres createuser --interactive
+
+--create database:
+create database rest_db with owner user_name
+
+--alter password 
+ALTER USER user_name WITH PASSWORD 'new_password';
+
